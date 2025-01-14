@@ -29,7 +29,7 @@ void World::Step()
 				if (BreakableObject* temp2 = dynamic_cast<BreakableObject*>(entity))
 				{
 					temp->SetDirection(Vector2(temp2->GetX() - temp->GetX(), temp2->GetY() - temp->GetY()));
-					std::cout << temp2->GetX() - temp->GetX() << "    " << temp2->GetY() - temp->GetY() << std::endl;
+					//std::cout << temp2->GetX() - temp->GetX() << "    " << temp2->GetY() - temp->GetY() << std::endl;
 					temp->Move();
 				}
 			}

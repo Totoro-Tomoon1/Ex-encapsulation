@@ -21,7 +21,17 @@ void Mob::TakeDamage(float damage)
 
 void Mob::Move()
 {
-	this->SetNewPosition(this->GetX() + this->GetVecteur().GetX() * this->GetSpeed(), this->GetY() + this->GetVecteur().GetY() * this->GetSpeed());
+	float distance = sqrt((this->GetVecteur().GetX() * this->GetVecteur().GetX()) + (this->GetVecteur().GetY() * this->GetVecteur().GetY()));
 
-	//std::cout << "Mob move to x = " << this->GetX() << " and y = " << this->GetY() << std::endl;
+	if (distance > this->GetSpeed())
+	{
+		float facteur = this->GetSpeed() / distance;
+		this->SetNewPosition(this->GetX() + this->GetVecteur().GetX() * facteur, this->GetY() + this->GetVecteur().GetY() * facteur);
+	}
+	else
+	{
+		this->SetNewPosition(this->GetX() + this->GetVecteur().GetX(), this->GetY() + this->GetVecteur().GetY());
+	}
+
+	std::cout << "Mob move to x = " << this->GetX() << " and y = " << this->GetY() << std::endl;
 }
